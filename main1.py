@@ -6,11 +6,11 @@ deb = FastAPI()
 
 @app.get("/")
 def healthcheck():
-    return 'OK'
+    return 'Hello'
 
 @deb.get("/")
 def healthcheck():
-    return '101'
+    return 'Привет'
 
 def func1():
     uvicorn.run(app)
