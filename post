@@ -1,0 +1,4 @@
+import requests
+
+link = 'https://127.0.0.1:8000/'
+resp = requests.post(link, data = {})
