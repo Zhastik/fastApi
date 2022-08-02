@@ -1,4 +1,5 @@
 import requests
 
-link = 'https://127.0.0.1:8000/'
-resp = requests.post(link, data = {})
+link = 'http://127.0.0.1:8000/test'
+data = {"Name": "Zhatik", "Language": "Python",}
+resp = requests.post(link, json = data)
