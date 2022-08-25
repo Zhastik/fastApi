@@ -1,0 +1,49 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+user_db = [
+    ['Artem', '24.03.2001', 'Samara'],
+    ['Ivan',  '12.08.1993', 'Moscow'],
+    ['Dasha', '7.11.1998', 'Boston']
+]
+
+class Response(BaseModel):
+    ID: int
+    for _ in range(len(user_db)):
+        a = user_db[_]
+        a[0]: str
+        a[1]: str
+        a[2]: str
+
+class Response2(BaseModel):
+    for _ in range(len(user_db)):
+        a = user_db[_]
+        a[0]: str
+        a[1]: str
+        a[2]: str
+
+@app.get('/user')
+async def home():
+    list_user = list(user_db)
+    return(list_user)
+
+@app.post('/user')
+async def test_post(response: Response2):
+    user_db.append(list(response.dict()))
+    return {'200'}
+
+@app.put('/user')
+async def test_put(response: Response):
+    ID = response.ID
+    user_db[ID] = response.dict()
+    return {'200'}
+
+@app.delete("/user")
+async def test_delete(response: Response):
+    ID = response.ID
+    del user_db[ID]
+    return {
+        'deleted'
+    }
+
